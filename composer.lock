@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a6ab158ab434fba9d072a367f05e9bce",
+    "content-hash": "584513dd5186db02b76fb70057f137e2",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1792,6 +1792,56 @@
                 "source": "https://github.com/PromPHP/prometheus_client_php/tree/v2.2.2"
             },
             "time": "2021-03-05T08:54:14+00:00"
+        },
+        {
+            "name": "promphp/prometheus_push_gateway_php",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PromPHP/prometheus_push_gateway_php.git",
+                "reference": "bb2ef227a906a9221bf66626b8efb711e6d62146"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PromPHP/prometheus_push_gateway_php/zipball/bb2ef227a906a9221bf66626b8efb711e6d62146",
+                "reference": "bb2ef227a906a9221bf66626b8efb711e6d62146",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.3|^7.0",
+                "php": "^7.2|^8.0",
+                "promphp/prometheus_client_php": "^1.0|^2.0"
+            },
+            "require-dev": {
+                "phpstan/extension-installer": "^1.0",
+                "phpstan/phpstan": "^0.12.50",
+                "phpstan/phpstan-phpunit": "^0.12.16",
+                "phpstan/phpstan-strict-rules": "^0.12.5",
+                "phpunit/phpunit": "^8.4|^9.4",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PrometheusPushGateway\\": "src/PrometheusPushGateway/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Lukas Kämmerling",
+                    "email": "kontakt@lukas-kaemmerling.de"
+                }
+            ],
+            "description": "Prometheus Push Gateway client for PHP applications.",
+            "support": {
+                "issues": "https://github.com/PromPHP/prometheus_push_gateway_php/issues",
+                "source": "https://github.com/PromPHP/prometheus_push_gateway_php/tree/v1.1.0"
+            },
+            "time": "2020-11-18T07:07:03+00:00"
         },
         {
             "name": "psr/container",
