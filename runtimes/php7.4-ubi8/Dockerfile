@@ -2,29 +2,17 @@ FROM ubi8/php-74
 
 LABEL maintainer="Andre Amorim"
 
-ARG WWWGROUP
-
-WORKDIR /var/www/html
-
-ENV TZ=UTC
+COPY www0.conf /etc/php-fpm.d/www0.conf
+COPY site.conf /etc/httpd/conf.d/site.conf
 
 USER root
 
-RUN yum update && \
-    yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm && \
-    yum install -y epel-release supervisor && \
-    yum install -y yarn
+RUN mkdir -p /run/php-fpm/ && \
+    mkdir -p /opt/app-root/src/storage/ && \
+    chgrp -R 0 /var/log/httpd /var/run/httpd /run/php-fpm && \
+    chmod -R g=u /var/log/httpd /var/run/httpd /run/php-fpm && \
+    chmod -R g=u /opt/app-root/src/storage/
 
-RUN php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer
+USER 1001
 
-RUN groupadd --force -g $WWWGROUP sail
-RUN useradd -ms /bin/bash --no-user-group -g $WWWGROUP -u 1337 sail
-
-COPY start-container /usr/local/bin/start-container
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-COPY php.ini /etc/php/7.4/cli/conf.d/99-sail.ini
-RUN chmod +x /usr/local/bin/start-container
-
-EXPOSE 8000
-
-ENTRYPOINT ["start-container"]
+CMD php-fpm & httpd -D FOREGROUND
