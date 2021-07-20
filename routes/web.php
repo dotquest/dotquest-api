@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use Prometheus\CollectorRegistry;
 use Prometheus\RenderTextFormat;
 use Prometheus\Storage\APC;
-use Prometheus\Storage\InMemory;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,20 +22,9 @@ Route::get('/', function () {
 
 Route::get('/metrics', function () {
 
-    phpinfo();
-
-    $adapter = new InMemory();
+    $adapter = new APC();
     $registry = new CollectorRegistry($adapter);
     $renderer = new RenderTextFormat();
-
-    $counter = $registry->getOrRegisterCounter('test', 'some_counter', 'it increases', ['type']);
-    $counter->incBy(3, ['blue']);
-
-    $gauge = $registry->getOrRegisterGauge('test', 'some_gauge', 'it sets', ['type']);
-    $gauge->set(2.5, ['blue']);
-
-    $histogram = $registry->getOrRegisterHistogram('test', 'some_histogram', 'it observes', ['type'], [0.1, 1, 2, 3.5, 4, 5, 6, 7, 8, 9]);
-    $histogram->observe(3.5, ['blue']);
 
     $result = $renderer->render($registry->getMetricFamilySamples());
 
