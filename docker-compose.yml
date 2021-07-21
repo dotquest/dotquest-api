@@ -38,6 +38,17 @@ services:
           test: ["CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}"]
           retries: 3
           timeout: 5s
+    grafana:
+        build:
+            context: ./runtimes/grafana
+            dockerfile: Dockerfile
+        image: 'grafana'
+        ports:
+            - '${FORWARD_DB_PORT:-3000}:3000'
+        volumes:
+            - './grafana-data:/var/lib/grafana'
+        networks:
+            - sail
 networks:
     sail:
         driver: bridge
