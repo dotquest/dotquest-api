@@ -27,11 +27,12 @@ Route::get('/metrics', function () {
     $response = $clientGuzz->request('GET', "http://localhost:8080/fpm-status?json");
     $content = json_decode(str_replace(" ", "", $response->getBody()));
 
-
     $adapter = new APC();
     $registry = new CollectorRegistry($adapter);
     $renderer = new RenderTextFormat();
 
+
+    # Instrumentação manual PHP - FPM
     $gauge = $registry->getOrRegisterGauge('php_fpm', 'accepted_connections_total', '', ['type']);
     $gauge->set($content->acceptedconn, ['php-fpm']);
 
@@ -64,6 +65,23 @@ Route::get('/metrics', function () {
 
     $gauge = $registry->getOrRegisterGauge('php_fpm', 'total_processes', '', ['type']);
     $gauge->set($content->totalprocesses, ['php-fpm']);
+
+    # Instrumentação manual parametro interno da aplicacao
+
+    $gauge = $registry->getOrRegisterGauge('app', 'parametro1', 'Primeiro parametro da aplicacao', ['type']);
+    $gauge->set(rand(1,100), ['app']);
+
+    $gauge = $registry->getOrRegisterGauge('app', 'parametro2', 'Segundo parametro da aplicacao', ['type']);
+    $gauge->set(rand(1,10), ['app']);
+
+    $gauge = $registry->getOrRegisterGauge('app', 'parametro3', 'Terceiro parametro da aplicacao', ['type']);
+    $gauge->set(rand(1,20), ['app']);
+
+    $gauge = $registry->getOrRegisterGauge('app', 'parametro4', 'Quarto parametro da aplicacao', ['type']);
+    $gauge->set(rand(1,5), ['app']);
+
+    $gauge = $registry->getOrRegisterGauge('app', 'parametro5', 'Quinto parametro da aplicacao', ['type']);
+    $gauge->set(rand(50,60), ['app']);
 
     $result = $renderer->render($registry->getMetricFamilySamples());
 
