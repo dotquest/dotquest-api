@@ -17,7 +17,7 @@
     "gnetId": 331,
     "graphTooltip": 0,
     "id": 5,
-    "iteration": 1627051264548,
+    "iteration": 1627058850143,
     "links": [],
     "panels": [
       {
@@ -1221,7 +1221,6 @@
           "sort": 0,
           "value_type": "cumulative"
         },
-        "transparent": true,
         "type": "graph",
         "xaxis": {
           "buckets": null,
@@ -2799,5 +2798,5 @@
     "timezone": "browser",
     "title": "Apache",
     "uid": "G-K_15W7z",
-    "version": 19
+    "version": 20
   }
