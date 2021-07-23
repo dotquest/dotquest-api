@@ -24,3 +24,9 @@ Homestead.json
 
 # Laravel 8
 /storage/
+
+#grafana
+/grafana-data/
+
+#influxdb
+/influxdbv2/
