@@ -28,3 +28,6 @@ Homestead.json
 # Monitoring
 /grafana-data/
 /influxdbv2/
+
+#Mysql
+/sailmysql/
