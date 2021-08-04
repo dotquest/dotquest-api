@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\TagController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,7 +13,14 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+#Route::resource('tags','App\Http\Controllers\TagController');
+#Route::put('api/{id}', function($id){
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+#});
+
+
+
+#Route::get('tags', 'App\Http\Controllers\TagController@index');
+#Route::post('tags', 'App\Http\Controllers\TagController@store');
+
+Route::apiResource('tags', 'App\Http\Controllers\TagController');
