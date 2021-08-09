@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Tag;
+use App\Http\Requests\StoreUserRequest;
 
 class TagController extends Controller
 {
@@ -13,8 +14,9 @@ class TagController extends Controller
                 return response()->json($dados);
     }
 
-    public function store(Request $request){
+    public function store(StoreUserRequest $request){
         Tag::create($request->all() );
+        
         #dd("fim");
     }
     
