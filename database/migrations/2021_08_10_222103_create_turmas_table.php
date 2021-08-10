@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Tag extends Migration
+class CreateTurmasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class Tag extends Migration
      */
     public function up()
     {
-        Schema::create('tag', function (Blueprint $table) {
+        Schema::create('turmas', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->string ('nomeTurma', 45);
+            $table->text ('descrição');
+            $table->string ('ano', 4);
+            $table->timestamps();
         });
     }
 
@@ -26,6 +29,6 @@ class Tag extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tag');
+        Schema::dropIfExists('turmas');
     }
 }
