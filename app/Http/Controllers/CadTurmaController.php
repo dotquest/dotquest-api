@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Turma;
+use App\Http\Requests\TurmaValidation;
 
 class CadTurmaController extends Controller
 {
@@ -12,8 +13,9 @@ class CadTurmaController extends Controller
         return response()->json($dados);                
     }
 
-    public function store(Request $request){
+    public function store(TurmaValidation $request){
         Turma::create($request->all());
+        
     }
 
     public function update(Request $request, $id){
