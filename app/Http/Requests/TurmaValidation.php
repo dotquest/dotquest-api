@@ -11,7 +11,7 @@ class TurmaValidation extends FormRequest
     {
         return [
         'nomeTurma' => 'required|max:45',
-        'descrição'=> 'required',
+        'descricao'=> 'required',
         'ano'=> 'required|min:4|max:4',
     ];
        

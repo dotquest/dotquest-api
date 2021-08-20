@@ -11,7 +11,7 @@ class Turma extends Model
     public $timestamps = false;
     protected $fillable = [
         'nomeTurma',
-        'descrição',
+        'descricao',
         'ano'
     ];
 }
