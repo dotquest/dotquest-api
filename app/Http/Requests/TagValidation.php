@@ -11,7 +11,7 @@ class TagValidation extends FormRequest
     {
        #Validação para o nome ser um campo obrigatorio
         return [
-            'name' =>['required', new FullName]
+            'nome' =>['required', new FullName]
             
         ];
         
