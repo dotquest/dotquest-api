@@ -1,4 +1,4 @@
-FROM ubi8/php-74
+FROM registry.redhat.io/ubi8/php-74
 
 LABEL maintainer="Andre Amorim"
 
